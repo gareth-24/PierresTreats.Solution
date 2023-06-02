@@ -27,6 +27,16 @@ namespace PierresTreats.Controllers
       return View(_db.Treats.ToList());
     }
 
+    // public async Task<ActionResult> Index()
+    // {
+    //   string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    //   ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+    //   List<Treat> userTreats = _db.Treats
+    //                       .Where(entry => entry.User.Id == currentUser.Id)
+    //                       .ToList();
+    //   return View(userTreats);
+    // }
+
     public ActionResult Details(int id)
     {
       Treat thisTreat = _db.Treats
@@ -36,6 +46,7 @@ namespace PierresTreats.Controllers
       return View(thisTreat);
     }
 
+    [Authorize]
     public ActionResult Create()
     {
       return View();
