@@ -8,9 +8,7 @@
 
 <hr>
 
-@if (User.Identity.IsAuthenticated)
-{
-  <h4>Treats for @User.Identity.Name</h4>
+  <h4>Treats</h4>
   @if (Model["treats"].Length == 0)
   {
     <p>No treats have been added yet!</p>
@@ -21,15 +19,17 @@
       <li>@Html.ActionLink(@treat.TreatName, "Details", "Treats", new { id = @treat.TreatId})</li>
     }
   </ul>
-}
-else
-{
-  <h4>Treats</h4>
-  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your treats.</p>
-}
+
+  <h4>Flavors</h4>
+  <ul>
+    @foreach (Flavor flavor in Model["flavors"])
+    {
+      <li>@Html.ActionLink(@flavor.Type, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
+    }
+  </ul>
 
 <hr>
 
-<p>@Html.ActionLink("Manage treats", "Index", "Treats")</p> 
-<p>@Html.ActionLink("Manage flavors", "Index", "Flavors")</p>
-<p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
+<p>@Html.ActionLink("Manage treats", "Index", "Treats", null, new { @class = "btn btn-secondary" })</p> 
+<p>@Html.ActionLink("Manage flavors", "Index", "Flavors", null, new { @class = "btn btn-secondary" })</p>
+<p>@Html.ActionLink("Create or manage an account", "Index", "Account", null, new { @class = "btn btn-secondary" })</p>
