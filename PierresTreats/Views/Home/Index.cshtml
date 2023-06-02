@@ -8,28 +8,44 @@
 
 <hr>
 
-  <h4>Treats</h4>
-  @if (Model["treats"].Length == 0)
-  {
-    <p>No treats have been added yet!</p>
-  } 
-  <ul>
-    @foreach (Treat treat in Model["treats"])
+<div class="row align-items-start">
+  <div class="col">
+    <h4>Treats:</h4>
+    @if (Model["treats"].Length == 0)
     {
-      <li>@Html.ActionLink(@treat.TreatName, "Details", "Treats", new { id = @treat.TreatId})</li>
-    }
-  </ul>
-
-  <h4>Flavors</h4>
-  <ul>
-    @foreach (Flavor flavor in Model["flavors"])
+      <p>No treats have been added yet!</p>
+    } 
+    <ul>
+      @foreach (Treat treat in Model["treats"])
+      {
+        <li>@Html.ActionLink(@treat.TreatName, "Details", "Treats", new { id = @treat.TreatId})</li>
+      }
+    </ul>
+  </div>
+  <div class="col">
+    <h4>Flavors:</h4>
+    @if (Model["flavors"].Length == 0)
     {
-      <li>@Html.ActionLink(@flavor.Type, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
-    }
-  </ul>
+      <p>No flavors have been added yet!</p>
+    } 
+    <ul>
+      @foreach (Flavor flavor in Model["flavors"])
+      {
+        <li>@Html.ActionLink(@flavor.Type, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
+      }
+    </ul>
+  </div>
+</div>
 
+<div class="row align-items-start">
+  <div class="col">
+    <p>@Html.ActionLink("Manage treats", "Index", "Treats", null, new { @class = "btn btn-secondary" })</p> 
+  </div>
+
+  <div class="col">
+    <p>@Html.ActionLink("Manage flavors", "Index", "Flavors", null, new { @class = "btn btn-secondary" })</p>
+  </div>
+</div>
 <hr>
 
-<p>@Html.ActionLink("Manage treats", "Index", "Treats", null, new { @class = "btn btn-secondary" })</p> 
-<p>@Html.ActionLink("Manage flavors", "Index", "Flavors", null, new { @class = "btn btn-secondary" })</p>
-<p>@Html.ActionLink("Create or manage an account", "Index", "Account", null, new { @class = "btn btn-secondary" })</p>
+<p>@Html.ActionLink("Create or manage an account", "Index", "Account", null, new { @class = "btn btn-primary" })</p>
