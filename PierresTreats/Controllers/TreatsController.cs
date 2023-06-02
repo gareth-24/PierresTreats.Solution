@@ -27,6 +27,7 @@ namespace PierresTreats.Controllers
       return View(_db.Treats.ToList());
     }
 
+    // [Authorize]
     // public async Task<ActionResult> Index()
     // {
     //   string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -82,22 +83,15 @@ namespace PierresTreats.Controllers
     [HttpPost]
     public ActionResult Edit(Treat treat)
     {
-      if(!ModelState.IsValid)
-      {
-        return View(treat);
-      }
-      else
-      {
       _db.Treats.Update(treat);
       _db.SaveChanges();
       return RedirectToAction("Index");
-      }
     }
 
     [Authorize]
     public ActionResult Delete(int id)
     {
-      Treat thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
+      Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
 
@@ -105,7 +99,7 @@ namespace PierresTreats.Controllers
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      Treat thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
+      Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       _db.Treats.Remove(thisTreat);
       _db.SaveChanges();
       return RedirectToAction("Index");
