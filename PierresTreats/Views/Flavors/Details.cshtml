@@ -1,0 +1,36 @@
+@{
+  Layout = "_Layout";
+}
+
+@using PierresTreats.Models;
+@model PierresTreats.Models.Flavor;
+
+<h2>Flavor Details</h2>
+<hr>
+
+<h3>@Html.DisplayFor(model => model.Type)</h3>  
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>There are no treats listed with this flavor profile yet!</p>
+}
+else
+{
+  <h4>This flavor is found in the following treats:</h4>
+  <ul>
+    @foreach(FlavorTreat join in Model.JoinEntities)
+    {
+      <li>Treat: @join.Treat.TreatName</li>
+      @using (Html.BeginForm("DeleteJoin", "Flavors"))
+      {
+        @Html.Hidden("joinId", @join.FlavorTreatId)
+        <input type="submit" value="Delete"/>
+      }
+    }
+  </ul>
+}
+<p>@Html.ActionLink("Edit this flavor", "Edit", "Flavors", new { id = Model.FlavorId }, new { @class = "btn btn-secondary"})</p>
+<p>@Html.ActionLink("Delete this flavor", "Delete", "Flavors", null, new { @class = "btn btn-secondary" })</p>
+<p>@Html.ActionLink("Add new flavor", "Create", "Flavors", null, new { @class = "btn btn-secondary" })</p>
+<p>@Html.ActionLink("Back to flavors list", "Index", "Flavors", null, new { @class = "btn btn-secondary" })</p>
+<p>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-secondary" })</p>
