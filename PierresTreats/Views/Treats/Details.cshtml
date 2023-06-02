@@ -30,7 +30,7 @@ else
     }
   </ul>
 }
-<p>@Html.ActionLink("Edit this treat", "Edit", "Treats", null, new { @class = "btn btn-secondary" })</p>
+<p>@Html.ActionLink("Edit this treat", "Edit", "Treats", new { id = Model.TreatId }, new { @class = "btn btn-secondary"})</p>
 <p>@Html.ActionLink("Delete this treat", "Delete", "Treats", null, new { @class = "btn btn-secondary" })</p>
 <p>@Html.ActionLink("Add new treat", "Create", "Treats", null, new { @class = "btn btn-secondary" })</p>
 <p>@Html.ActionLink("Back to treats list", "Index", "Treats", null, new { @class = "btn btn-secondary" })</p>
