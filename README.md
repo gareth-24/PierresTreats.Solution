@@ -16,7 +16,7 @@
 
 
 ## Description
-__
+_This is an MVC web application that allows users to view details about the treats available at Pierre's Bakery. Only users that are logged in to a registered account through ASP.NET Core Identity may create, update, and delete the information on the website. All users can view treats based on the flavor profiles that the treats have been tagged for. If a user attempts to edit or delete a treat without authentication, they will be redirected to the account registration page._
 
 ## Setup/Installation Requirements
 
