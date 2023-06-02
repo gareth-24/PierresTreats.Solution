@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model PierresTreats.Models.Flavor
+
+<h2>Edit flavor</h2>
+<hr>
+
+<h4>Edit this flavor: @Html.DisplayFor(model => model.Type)</h4>
+
+<p>@Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.FlavorId)
+
+  @Html.LabelFor(model => model.Type, "Flavor: ")<br>
+  @Html.TextBoxFor(model => model.Type, new { placeholder = "sweet", style="font-style:italic"})
+  <br>
+  <input type="submit" value="Save" class="btn btn-primary" />
+}
+<hr><br>
+<p>@Html.ActionLink("Show all flavors", "Index", "Flavors", null, new { @class = "btn btn-secondary" })</p>

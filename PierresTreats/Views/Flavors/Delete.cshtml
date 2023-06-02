@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model PierresTreats.Models.Flavor
+
+<h2>Delete flavor</h2>
+<hr>
+
+<h4>Are you sure you want to delete this flavor?</h4>
+
+@Html.DisplayFor(model => model.Type)
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+<hr><br>
+@Html.ActionLink("Back to List", "Index", "Flavors", null, new { @class = "btn btn-secondary" })
